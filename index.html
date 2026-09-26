@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="scroll-progress" aria-hidden="true"></div>
+
     <header class="header">
         <a href="#" class="logo">Mugni<span>AJA</span></a>
 
@@ -60,21 +62,21 @@
         <h2 class="heading">Layanan <span>Saya</span></h2>
         <div class="services-container">
             <div class="service-box">
-                <i class="fa-solid fa-code"></i>
-                <h3>Pengembangan Web</h3>
-                <p>Membangun situs web yang responsif dan berperforma tinggi menggunakan teknologi web modern seperti HTML5, CSS3, JavaScript, React.js, dan Node.js.</p>
+                <i class="fa-solid fa-layer-group"></i>
+                <h3>Full-Stack Developer</h3>
+                <p>Satu orang menangani sisi antarmuka sekaligus logika bisnis, basis data, dan server. Dari ide sampai sistem Anda benar-benar hidup.</p>
                 <a href="#service-web-dev" class="btn btn-service" data-service="web-development">Baca Selengkapnya</a>
             </div>
             <div class="service-box">
-                <i class="fa-solid fa-palette"></i>
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
                 <h3>Desain UI/UX</h3>
-                <p>Menciptakan interface pengguna dan pengalaman yang intuitif dan estetis dengan fokus pada user-centered design dan prototipe interaktif.</p>
+                <p>Antarmuka yang terasa alami karena ada proses yang matang di belakangnya. Desain yang menaikkan konversi, bukan sekadar cantik.</p>
                 <a href="#service-ui-ux" class="btn btn-service" data-service="ui-ux">Baca Selengkapnya</a>
             </div>
             <div class="service-box">
                 <i class="fa-solid fa-chart-line"></i>
-                <h3>Project Data Analyst</h3>
-                <p>Melakukan analisis data untuk memberikan wawasan dan rekomendasi berdasarkan data yang dianalisis.</p>
+                <h3>Data Analyst</h3>
+                <p>Data mentah Anda diubah jadi keputusan konkret. Saya menemukan pola, mengukur dampaknya, lalu merekomendasikan tindakan yang bisa langsung dijalankan.</p>
                 <a href="#service-data-analyst" class="btn btn-service" data-service="data-analyst">Baca Selengkapnya</a>
             </div>
         </div>
@@ -153,52 +155,126 @@
                 <div class="experience-dot"></div>
                 <h4>Website</h4>
                 <h3>Portofolio</h3>
-                <img src="img/WP.jpg" alt="Portofolio Website">
+                <a class="project-media" href="portofolio.html" aria-label="Lihat detail proyek Portofolio">
+                    <img src="img/WP.jpg" alt="Portofolio Website">
+                    <span class="project-media-overlay"><i class="fa-solid fa-arrow-right"></i></span>
+                </a>
                 <p>Membuat website portofolio pribadi dengan menggunakan html, css, dan javascript.</p>
+                <div class="project-tags">
+                    <span>HTML5</span>
+                    <span>CSS3</span>
+                    <span>JavaScript</span>
+                </div>
+                <a class="btn-project" href="portofolio.html">
+                    <i class="fa-solid fa-arrow-right"></i> Lihat Detail Projek
+                </a>
             </div>
             <div class="experience-item">
                 <div class="experience-dot"></div>
-                <h4>Aplikasi</h4>
-                <h3>Absensi</h3>
-                <img src="img/WA.jpg" alt="Aplikasi Absensi">
-                <p>Memembuat aplikasi absensi sederhana menggunakan visual basic dan database mysql.</p>
+                <h4>Web App</h4>
+                <h3>SIAKAD Al-Manaar</h3>
+                <a class="project-media" href="SIAKAD.html" aria-label="Lihat detail proyek SIAKAD Al-Manaar">
+                    <img src="img/WSK.PNG" alt="Dashboard SIAKAD Al-Manaar">
+                    <span class="project-media-overlay"><i class="fa-solid fa-arrow-right"></i></span>
+                </a>
+                <p>Membuat sistem informasi akademik untuk mengelola data guru, siswa, dan kelas di TK Al-Manaarussadiyyah.</p>
+                <div class="project-tags">
+                    <span>PHP</span>
+                    <span>MySQL</span>
+                    <span>Bootstrap 5</span>
+                </div>
+                <a class="btn-project" href="SIAKAD.html">
+                    <i class="fa-solid fa-arrow-right"></i> Lihat Detail Projek
+                </a>
             </div>
             <div class="experience-item">
                 <div class="experience-dot"></div>
                 <h4>Website</h4>
-                <h3>Kalkulator</h3>
-                <img src="img/WK.jpg" alt="Website Kalkulator">
-                <p>Membuat website kalkulator sederhana menggunakan html, css, dan javascript.</p>
+                <h3>Katalog Kopi</h3>
+                <a class="project-media" href="kenangansenja.html" aria-label="Lihat detail proyek Website E-Katalog kenangansenja">
+                    <img src="img/WEK.png" alt="Website E-Katalog kenangansenja">
+                    <span class="project-media-overlay"><i class="fa-solid fa-arrow-right"></i></span>
+                </a>
+                <p>Website e-katalog kedai kopi lokal dengan katalog produk, keranjang belanja, dan testimoni.</p>
+                <div class="project-tags">
+                    <span>HTML5</span>
+                    <span>CSS3</span>
+                    <span>JavaScript</span>
+                </div>
+                <a class="btn-project" href="kenangansenja.html">
+                    <i class="fa-solid fa-arrow-right"></i> Lihat Detail Projek
+                </a>
             </div>
             <div class="experience-item">
                 <div class="experience-dot"></div>
                 <h4>Website</h4>
-                <h3>Login Page</h3>
-                <img src="img/WL.jpg" alt="Login Page Website">
-                <p>Membuat login page simple dengan menggunakan html, css, dan javascript.</p>
+                <h3>Facebook Clone</h3>
+                <a class="project-media" href="facebook.html" aria-label="Lihat detail proyek Website Facebook Clone">
+                    <img src="img/WFB.png" alt="Website Facebook Clone">
+                    <span class="project-media-overlay"><i class="fa-solid fa-arrow-right"></i></span>
+                </a>
+                <p>Website tiruan Facebook yang mensimulasikan percakapan dua arah dengan bot mugbot.</p>
+                <div class="project-tags">
+                    <span>HTML</span>
+                    <span>CSS</span>
+                    <span>JavaScript</span>
+                </div>
+                <a class="btn-project" href="facebook.html">
+                    <i class="fa-solid fa-arrow-right"></i> Lihat Detail Projek
+                </a>
             </div>
             <div class="experience-item">
                 <div class="experience-dot"></div>
                 <h4>Website</h4>
                 <h3>Anime(BNHA)</h3>
-                <img src="img/WB.jpg" alt="Website Anime BNHA">
+                <a class="project-media" href="animeBNHA.html" aria-label="Lihat detail proyek Website Anime BNHA">
+                    <img src="img/WB.jpg" alt="Website Anime BNHA">
+                    <span class="project-media-overlay"><i class="fa-solid fa-arrow-right"></i></span>
+                </a>
                 <p>Membuat website anime lover dengan menggunakan html, css, dan javascript.</p>
+                <div class="project-tags">
+                    <span>HTML</span>
+                    <span>CSS</span>
+                    <span>JavaScript</span>
+                </div>
+                <a class="btn-project" href="animeBNHA.html">
+                    <i class="fa-solid fa-arrow-right"></i> Lihat Detail Projek
+                </a>
             </div>
         </div>
     </section>
 
     <section class="contact" id="contact">
         <h2 class="heading">Hubungi <span>Saya</span></h2>
-        <form id="contact-form">
+        <!-- action + method dipakai sebagai cadangan bila JavaJS tidak aktif -->
+        <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+
+            <!-- ================= WAJIB DIGANTI =================
+                 Buka https://web3forms.com, masukkan email Anda, lalu salin
+                 Access Key (format UUID, misal: 1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d)
+                 yang dikirim ke inbox Anda, lalu tempel di bawah.
+                 Nilai 00000000-... adalah placeholder, form TIDAK akan berfungsi
+                 sebelum diganti. ================================ -->
+            <input type="hidden" name="access_key" id="access_key" value="556714cf-8de6-40dc-8d0c-4c37ce045f34">
+
+            <input type="hidden" name="subject" value="Pesan baru dari Website Portofolio">
+            <input type="hidden" name="from_name" value="Website Portofolio Mugni Asfi Asfiya">
+
+            <!-- Honeypot: bot mengisi field ini, manusia tidak. Kosongkan bila form bermasalah. -->
+            <div class="hp-field" aria-hidden="true">
+                <input type="text" name="botcheck" id="botcheck" tabindex="-1" autocomplete="off">
+            </div>
+
             <div class="input-box">
-                <input type="text" placeholder="Nama Lengkap" id="name" required>
+                <input type="text" name="name" placeholder="Nama Lengkap" id="name" required>
             </div>
             <div class="input-box">
-                <input type="tel" placeholder="Nomor Ponsel" id="phone">
-                <input type="email" placeholder="Alamat Email" id="email" required>
+                <input type="tel" name="phone" placeholder="Nomor Ponsel" id="phone">
+                <input type="email" name="email" placeholder="Alamat Email" id="email" required>
             </div>
-            <textarea id="message" cols="30" rows="10" placeholder="Pesan Anda" required></textarea>
-            <input type="submit" value="Kirim Pesan" class="btn">
+            <textarea name="message" id="message" cols="30" rows="10" placeholder="Pesan Anda" required></textarea>
+            <input type="submit" value="Kirim Pesan" class="btn" id="contact-submit">
+            <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
         </form>
         <div class="contact-info">
             <div class="info-item">
@@ -227,7 +303,7 @@
 
     <footer class="footer">
         <div class="footer-text">
-            <p>Hak Cipta &copy; 2025 oleh Mugni Asfi Asfiya | Semua Hak Dilindungi.</p>
+            <p>Hak Cipta &copy; 2026 oleh Mugni Asfi Asfiya | Semua Hak Dilindungi.</p>
         </div>
         <div class="footer-iconTop">
             <a href="#home"><i class="fa-solid fa-angle-up"></i></a>
@@ -299,16 +375,16 @@
                 <div class="cv-section-preview">
                     <h4><i class="fa-solid fa-briefcase"></i> Pengalaman Projek</h4>
                     <div class="cv-item">
+                        <h5>Sistem Informasi Akademik (SIAKAD)</h5>
+                        <p>Membuat aplikasi manajemen data sekolah dengan PHP, MySQL &amp; Bootstrap 5</p>
+                    </div>
+                    <div class="cv-item">
+                        <h5>Website E-Katalog kenangansenja</h5>
+                        <p>Membuat website e-katalog kopi dengan HTML, CSS, JavaScript</p>
+                    </div>
+                    <div class="cv-item">
                         <h5>Website Portofolio</h5>
-                        <p>Membuat website portofolio dengan HTML, CSS, JavaScript</p>
-                    </div>
-                    <div class="cv-item">
-                        <h5>Aplikasi Absensi</h5>
-                        <p>Membuat aplikasi absensi dengan Visual Basic & MySQL</p>
-                    </div>
-                    <div class="cv-item">
-                        <h5>Website Kalkulator</h5>
-                        <p>Membuat kalkulator web dengan HTML, CSS, JavaScript</p>
+                        <p>Membuat website portofolio pribadi dengan HTML, CSS, JavaScript</p>
                     </div>
                 </div>
                 

@@ -75,51 +75,75 @@ document.addEventListener('DOMContentLoaded', function() {
     const closeModal = document.querySelector('.close-modal');
 
     // Data for service modals
+    // CATATAN: ini satu-satunya salinan yang hidup. Salinan kedua di blok
+    // DOMContentLoaded paling bawah sudah dihapus.
     const serviceData = {
         'web-development': {
-            title: 'Pengembangan Web',
+            title: 'Full-Stack Developer',
             content: `
-                <p>Saya menawarkan layanan pengembangan web yang komprehensif dengan fokus pada:</p>
+                <p>
+                    Banyak proyek gagal bukan karena salah satu technology, tapi karena
+                    <strong>frontend dan backend dikerjakan oleh pihak berbeda</strong> dan
+                    handoff-nya bermasalah. Saya menangani keduanya, jadi tidak ada bagian
+                    yang saling menunggu.
+                </p>
                 <ul>
-                    <li><strong>Website Responsif:</strong> Membangun website yang tampil optimal di semua perangkat</li>
-                    <li><strong>Single Page Applications:</strong> Mengembangkan aplikasi web modern menggunakan React.js</li>
-                    <li><strong>E-commerce Solutions:</strong> Membuat toko online dengan fitur lengkap</li>
-                    <li><strong>CMS Custom:</strong> Mengembangkan sistem manajemen konten yang disesuaikan</li>
-                    <li><strong>Optimasi Performa:</strong> Memastikan website loading cepat dan efisien</li>
-                    <li><strong>SEO Friendly:</strong> Membangun website dengan struktur ramah SEO</li>
+                    <li><strong>Aplikasi web sesuai alur kerja Anda:</strong> dibangun dari nol mengikuti proses bisnis Anda, bukan template yang dipaksa berubah-ubah.</li>
+                    <li><strong>Dashboard &amp; sistem internal:</strong> admin, inventaris, absensi, hingga laporan penjualan yang saling terhubung dalam satu basis data.</li>
+                    <li><strong>Integrasi API:</strong> pembayaran, ongkos kirim, dan layanan pihak ketiga yang disambung rapi ke sistem Anda.</li>
+                    <li><strong>Keamanan &amp; performa:</strong> validasi input di server, proteksi formulir, dan optimasi query agar tetap cepat saat data bertambah.</li>
+                    <li><strong>Fondasi yang bisa dikembangkan:</strong> struktur kode rapi dan terdokumentasi, jadi menambah fitur berikutnya tidak perlu bongkar-pasang.</li>
                 </ul>
-                <p><strong>Teknologi:</strong> HTML5, CSS3, JavaScript, React.js, Node.js, Express.js, MongoDB</p>
+                <p class="modal-note">
+                    <strong>Untuk Anda:</strong> saya mulai dari memahami masalah Anda, bukan dari langsung menulis kode. Konsultasi awal gratis.
+                </p>
+                <p><strong>Teknologi:</strong> HTML5, CSS3, JavaScript, Node.js, Express.js, PHP, Laravel, MySQL, PostgreSQL</p>
+                <p class="modal-cta"><a href="#contact">Diskusikan kebutuhan Anda &rarr;</a></p>
             `
         },
         'ui-ux': {
             title: 'Desain UI/UX',
             content: `
-                <p>Layanan desain UI/UX saya mencakup:</p>
+                <p>
+                    Desain yang cantik belum tentu membuat produknya mudah dipakai. Yang membuat orang bertahan adalah
+                    <strong>alur yang tidak terasa membosankan</strong> dan layar yang menyembunyikan
+                    kompleksitas, bukan menampilkannya.
+                </p>
                 <ul>
-                    <li><strong>User Research:</strong> Analisis kebutuhan pengguna dan riset kompetitor</li>
-                    <li><strong>Wireframing & Prototyping:</strong> Membuat kerangka dan prototipe interaktif</li>
-                    <li><strong>UI Design:</strong> Desain antarmuka yang estetis dan sesuai brand identity</li>
-                    <li><strong>UX Design:</strong> Mengoptimalkan alur pengguna untuk meningkatkan engagement</li>
-                    <li><strong>Design Systems:</strong> Membuat sistem desain yang konsisten</li>
-                    <li><strong>Usability Testing:</strong> Pengujian dengan pengguna untuk identifikasi masalah</li>
+                    <li><strong>Riset &amp; Competitive Audit:</strong> memahami siapa pengguna Anda dan mencari celah yang belum dipakai kompetitor.</li>
+                    <li><strong>Wireframe &amp; Prototipe interaktif:</strong> Anda bisa mencoba alurnya sebelum satu baris kode ditulis.</li>
+                    <li><strong>Design System:</strong> komponen, warna, dan tipografi yang konsisten agar tampilan tidak terlihat tambal sulam.</li>
+                    <li><strong>Usability Testing:</strong> menguji dengan pengguna sungguhan dan memperbaiki titik yang jadi alasan mereka keluar.</li>
+                    <li><strong>Desain yang siap langsung dikerjakan tim developer:</strong> file rapi dan terstruktur, mudah diserahkan ke tim Coding tanpa penerjemahan ulang.</li>
                 </ul>
-                <p><strong>Tools:</strong> Figma, Adobe XD, Sketch, Canva</p>
+                <p class="modal-note">
+                    <strong>Untuk Anda:</strong> fokus pertama saya adalah menemukan alasan pengunjung Anda berhenti. Panjang halaman dan warna teks bukan tebakan.
+                </p>
+                <p><strong>Tools:</strong> Figma, Adobe XD, Canva</p>
+                <p class="modal-cta"><a href="#contact">Mulai dari kebutuhan Anda &rarr;</a></p>
             `
         },
         'data-analyst': {
-             title: 'Project Data Analyst',
-             content: `
-                <p>Layanan data analyst saya mencakup:</p>
-                 <ul>
-                    <li><strong>Data Cleaning & Preparation:</strong> Memproses dan menyiapkan data mentah untuk dianalisis</li>
-                    <li><strong>Exploratory Data Analysis (EDA):</strong> Mengidentifikasi pola, tren, dan anomali dalam data</li>
-                    <li><strong>Data Visualization:</strong> Membuat dashboard dan laporan visual yang informatif (charts, graphs)</li>
-                    <li><strong>Statistical Analysis:</strong> Menerapkan metode statistik untuk menguji hipotesis dan mendapatkan insight</li>
-                    <li><strong>Reporting & Insight Generation:</strong> Menyusun laporan analitis dengan rekomendasi yang dapat ditindaklanjuti</li>
-                    <li><strong>Project Support:</strong> Memberikan dukungan berbasis data untuk pengambilan keputusan proyek</li>
+            title: 'Data Analyst',
+            content: `
+                <p>
+                    Kebanyakan laporan dari data berakhir sebagai file yang tidak pernah dibuka
+                    lagi. Tugas saya adalah mengubahnya menjadi <strong>opsi yang punya angka</strong>,
+                    bukan sekadar grafik yang menarik tapi tidak bisa ditindaklanjuti.
+                </p>
+                <ul>
+                    <li><strong>Data Cleaning &amp; Preparation:</strong> merapikan data mentah yang berantakan, duplikat, dan tidak lengkap sebelum dianalisis.</li>
+                    <li><strong>Analisis Exploratory:</strong> menemukan pola, tren, dan anomali yang selama ini terlewat di angka-angka besar.</li>
+                    <li><strong>Dashboard visual:</strong> ringkasan yang bisa dibaca atasan dalam satu layar, bukan tabel panjang.</li>
+                    <li><strong>Analisis statistik:</strong> menguji hipotesis dengan dasar yang benar, sehingga kesimpulan tidak sekadar tebakan.</li>
+                    <li><strong>Rekomendasi yang bisa dijalankan:</strong> setiap temuan disertai saran tindakan dan perkiraan dampaknya.</li>
                 </ul>
-                <p><strong>Teknologi & Tools:</strong> SQL, Excel/Google Sheets, Statistik</p>
-    `
+                <p class="modal-note">
+                    <strong>Untuk Anda:</strong> saya selalu mulai dari pertanyaan bisnis Anda, bukan dari tools. Data yang tidak dipakai untuk mengambil keputusan tidak perlu dianalisis.
+                </p>
+                <p><strong>Teknologi &amp; Tools:</strong> SQL, Python, Excel/Google Sheets, SPSS</p>
+                <p class="modal-cta"><a href="#contact">Konsultasi kebutuhan data &rarr;</a></p>
+            `
         }
     };
 
@@ -148,6 +172,24 @@ document.addEventListener('DOMContentLoaded', function() {
 
     closeModal.addEventListener('click', closeServiceModal);
 
+    // CTA di dalam modal (class .modal-cta) di-inject lewat innerHTML, jadi
+    // TIDAK ikut tertangkap handler smooth-scroll yang di-bind saat DOMContentLoaded.
+    // Event delegation: tutup modal dulu, baru menggulir ke tujuan.
+    serviceModal.addEventListener('click', (e) => {
+        const cta = e.target.closest('a[href^="#"]');
+        if (!cta) return;
+
+        const target = document.querySelector(cta.getAttribute('href'));
+        if (!target) return;
+
+        e.preventDefault();
+        closeServiceModal();
+        // Tunggu modal selesai menutup agar posisi scroll dihitung setelah layout final
+        setTimeout(() => {
+            window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' });
+        }, 220);
+    });
+
     // Close modal when clicking outside
     window.addEventListener('click', (e) => {
         if (e.target === serviceModal) {
@@ -165,44 +207,94 @@ document.addEventListener('DOMContentLoaded', function() {
     // Contact form submission
     const contactForm = document.getElementById('contact-form');
     if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
+        const submitBtn = document.getElementById('contact-submit');
+        const statusBox = document.getElementById('form-status');
+        const accessKeyField = document.getElementById('access_key');
+        const originalBtnLabel = submitBtn ? submitBtn.value : '';
+
+        const setStatus = (type, text) => {
+            if (!statusBox) return;
+            statusBox.className = 'form-status' + (type ? ' ' + type : '');
+            statusBox.textContent = text;
+        };
+
+        contactForm.addEventListener('submit', async function(e) {
             e.preventDefault();
-            
-            // Get form data
-            const formData = {
-                name: document.getElementById('name').value,
-                email: document.getElementById('email').value,
-                phone: document.getElementById('phone').value,
-                message: document.getElementById('message').value
-            };
-            
-            // Simple validation
-            if (!formData.name || !formData.email || !formData.message) {
-                alert('Mohon lengkapi semua field yang wajib diisi!');
+
+            // Honeypot terisi berarti bot, bukan manusia. Diamkan tanpa kirim.
+            const honeypot = document.getElementById('botcheck');
+            if (honeypot && honeypot.value) return;
+
+            // Access key belum diganti dengan UUID asli dari web3forms.com
+            if (accessKeyField && accessKeyField.value.startsWith('00000000')) {
+                setStatus('error', 'Form belum dikonfigurasi. Ganti access_key di index.html dengan UUID dari web3forms.com.');
                 return;
             }
-            
+
+            // Get form data
+            const formData = {
+                name: document.getElementById('name').value.trim(),
+                email: document.getElementById('email').value.trim(),
+                phone: document.getElementById('phone').value.trim(),
+                message: document.getElementById('message').value.trim()
+            };
+
+            // Simple validation
+            if (!formData.name || !formData.email || !formData.message) {
+                setStatus('error', 'Mohon lengkapi semua field yang wajib diisi.');
+                return;
+            }
+
             // Email validation
             const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailPattern.test(formData.email)) {
-                alert('Mohon masukkan alamat email yang valid!');
+                setStatus('error', 'Mohon masukkan alamat email yang valid!');
                 return;
             }
-            
-            // In a real application, you would send this data to a server
-            // For now, we'll just log it and show a success message
-            console.log('Contact Form Data:', formData);
-            
-            // Show success message
-            alert('Pesan Anda telah berhasil dikirim! Saya akan menghubungi Anda segera.');
-            
-            // Reset form
-            contactForm.reset();
-            
-            // Optional: Send email using a service like EmailJS
-            // emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', this)
-            //     .then(() => alert('Message sent successfully!'))
-            //     .catch(error => alert('Error sending message: ' + error));
+
+            // Kunci tombol agar tidak terkirim dua kali
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.value = 'Mengirim...';
+            }
+            setStatus('', 'Mengirim pesan Anda, mohon tunggu sebentar...');
+
+            try {
+                const payload = Object.fromEntries(new FormData(contactForm).entries());
+                const response = await fetch(contactForm.action, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify(payload)
+                });
+
+                const result = await response.json();
+
+                // Web3Forms membungkus pesan di dalam result.body.message
+                const apiMessage = (result && result.body && result.body.message) || '';
+
+                if (result.success) {
+                    setStatus('success', 'Pesan Anda telah berhasil dikirim! Saya akan menghubungi Anda segera.');
+                    contactForm.reset();
+                } else {
+                    setStatus('error', 'Gagal mengirim: ' + (apiMessage || 'terjadi kesalahan, coba lagi.'));
+                }
+            } catch (err) {
+                // fetch gagal (CORS / offline / Cloudflare challenge).
+                // Fallback ke submit native: browser melakukan navigasi sungguhan,
+                // jadi form tetap terkirim walau AJAX ditolak.
+                console.warn('AJAX submit gagal, jatuh ke submit native:', err);
+                setStatus('', 'Mengirim pesan Anda, mohon tunggu sebentar...');
+                contactForm.submit();
+                return;
+            } finally {
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.value = originalBtnLabel;
+                }
+            }
         });
     }
 
@@ -361,7 +453,12 @@ document.addEventListener('DOMContentLoaded', function() {
             // Animate skill bars
             setTimeout(() => {
                 document.querySelectorAll('.skill-bar').forEach(bar => {
-                    bar.style.width = bar.style.width;
+                    const target = bar.style.width;
+                    if (!target) return;
+                    bar.style.width = '0';
+                    // Paksa reflow agar transisi_width dijalankan ulang dari 0
+                    void bar.offsetWidth;
+                    bar.style.width = target;
                 });
             }, 300);
         });
@@ -406,72 +503,44 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Also update service data for new service (Data Analyst)
-    const serviceData = {
-        'web-development': {
-            title: 'Pengembangan Web',
-            content: `
-                <p>Saya menawarkan layanan pengembangan web yang komprehensif dengan fokus pada:</p>
-                <ul>
-                    <li><strong>Website Responsif:</strong> Membangun website yang tampil optimal di semua perangkat</li>
-                    <li><strong>Single Page Applications:</strong> Mengembangkan aplikasi web modern menggunakan React.js</li>
-                    <li><strong>E-commerce Solutions:</strong> Membuat toko online dengan fitur lengkap</li>
-                    <li><strong>CMS Custom:</strong> Mengembangkan sistem manajemen konten yang disesuaikan</li>
-                    <li><strong>Optimasi Performa:</strong> Memastikan website loading cepat dan efisien</li>
-                    <li><strong>SEO Friendly:</strong> Membangun website dengan struktur ramah SEO</li>
-                </ul>
-                <p><strong>Teknologi:</strong> HTML5, CSS3, JavaScript, Node.js, Express.js</p>
-            `
-        },
-        'ui-ux': {
-            title: 'Desain UI/UX',
-            content: `
-                <p>Layanan desain UI/UX saya mencakup:</p>
-                <ul>
-                    <li><strong>User Research:</strong> Analisis kebutuhan pengguna dan riset kompetitor</li>
-                    <li><strong>Wireframing & Prototyping:</strong> Membuat kerangka dan prototipe interaktif</li>
-                    <li><strong>UI Design:</strong> Desain antarmuka yang estetis dan sesuai brand identity</li>
-                    <li><strong>UX Design:</strong> Mengoptimalkan alur pengguna untuk meningkatkan engagement</li>
-                    <li><strong>Design Systems:</strong> Membuat sistem desain yang konsisten</li>
-                    <li><strong>Usability Testing:</strong> Pengujian dengan pengguna untuk identifikasi masalah</li>
-                </ul>
-                <p><strong>Tools:</strong> Figma, Photoshop, Sketch, Canva</p>
-            `
-        },
-        'data-analyst': {
-            title: 'Project Data Analyst',
-            content: `
-                <p>Layanan analisis data yang saya tawarkan:</p>
-                <ul>
-                    <li><strong>Data Cleaning & Preprocessing:</strong> Membersihkan dan mempersiapkan data untuk analisis</li>
-                    <li><strong>Exploratory Data Analysis:</strong> Menganalisis pola dan tren dalam data</li>
-                    <li><strong>Data Visualization:</strong> Membuat visualisasi data yang informatif dan menarik</li>
-                    <li><strong>Predictive Modeling:</strong> Membangun model prediksi menggunakan teknik statistik</li>
-                    <li><strong>Business Insights:</strong> Memberikan wawasan bisnis berdasarkan analisis data</li>
-                    <li><strong>Reporting:</strong> Membuat laporan analisis yang komprehensif dan mudah dipahami</li>
-                </ul>
-                <p><strong>Tools:</strong> Python, Excel, SQL</p>
-            `
-        }
-    };
-    
-    // Make sure the Data Analyst service button works
-    const dataAnalystBtn = document.querySelector('[data-service="data-analyst"]');
-    if (dataAnalystBtn && !serviceData['data-analyst']) {
-        serviceData['data-analyst'] = {
-            title: 'Project Data Analyst',
-            content: `
-                <p>Layanan analisis data yang saya tawarkan:</p>
-                <ul>
-                    <li><strong>Data Cleaning & Preprocessing:</strong> Membersihkan dan mempersiapkan data untuk analisis</li>
-                    <li><strong>Exploratory Data Analysis:</strong> Menganalisis pola dan tren dalam data</li>
-                    <li><strong>Data Visualization:</strong> Membuat visualisasi data yang informatif dan menarik</li>
-                    <li><strong>Business Insights:</strong> Memberikan wawasan bisnis berdasarkan analisis data</li>
-                    <li><strong>Reporting:</strong> Membuat laporan analisis yang komprehensif</li>
-                </ul>
-            `
-        };
-    }
-    
-    // ... (sisa kode yang sudah ada) ...
 });
+// ================================================================
+// Advanced Enhancements (scroll progress + mouse spotlight)
+// Sengaja ditulis sebagai IIFE terpisah: tidak menambah listener
+// DOMContentLoaded ke-3 dan tidak menyentuh blok serviceData.
+// ================================================================
+(function () {
+    'use strict';
+
+    // --- Scroll Progress Bar ---
+    const progressBar = document.querySelector('.scroll-progress');
+
+    if (progressBar) {
+        const updateProgress = () => {
+            const doc = document.documentElement;
+            const scrollTop = window.scrollY || doc.scrollTop;
+            const scrollable = doc.scrollHeight - window.innerHeight;
+            const percent = scrollable > 0 ? (scrollTop / scrollable) * 100 : 0;
+            progressBar.style.width = Math.min(100, Math.max(0, percent)) + '%';
+        };
+
+        window.addEventListener('scroll', updateProgress, { passive: true });
+        window.addEventListener('resize', updateProgress);
+        updateProgress();
+    }
+
+    // --- Spotlight yang mengikuti mouse pada kartu ---
+    // Hanya mengubah custom property --mx/--my, bukan transform,
+    // supaya tidak bentrok dengan animasi .animate dari IntersectionObserver.
+    const spotlightCards = document.querySelectorAll(
+        '.service-box, .experience-item, .education-item, .skill-category, .info-item'
+    );
+
+    spotlightCards.forEach((card) => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            card.style.setProperty('--mx', ((e.clientX - rect.left) / rect.width) * 100 + '%');
+            card.style.setProperty('--my', ((e.clientY - rect.top) / rect.height) * 100 + '%');
+        });
+    });
+})();

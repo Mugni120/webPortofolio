@@ -414,11 +414,26 @@ section {
     background: var(--second-bg-color);
     padding: 4rem;
     border-radius: 1.5rem;
-    max-width: 600px;
+    max-width: 720px;
     width: 90%;
+    /* WAJIB: tanpa max-height + overflow, isi modal yang panjang akan
+       melebihi viewport lalu terpotong dan tidak bisa di-scroll.
+       dvh ditulis setelah vh agar aman di browser mobile (address bar). */
+    max-height: 90vh;
+    max-height: 90dvh;
     position: relative;
     border: 0.2rem solid var(--main-color);
     box-shadow: 0 0 30px var(--main-color);
+}
+
+/* Hanya modal LAYANAN: judul + tombol tutup tetap diam, isinya yang
+   menggulir. Di-scope dengan #service-modal supaya .cv-modal .modal-content
+   (yang sudah punya max-height + overflow sendiri) tidak ikut berubah jadi
+   flex column -- jika tidak, isinya akan ter-shrink, bukan overflow. */
+#service-modal .modal-content {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
 }
 
 .close-modal {
@@ -440,12 +455,38 @@ section {
     margin-bottom: 2rem;
     font-size: 2.8rem;
     text-align: center;
+    flex: 0 0 auto; /* Judul tidak ikut tergulir */
 }
 
 #modal-body {
     color: #cccccc;
     line-height: 1.8;
     font-size: 1.6rem;
+    /* min-height:0 wajib agar overflow bekerja di dalam flex container */
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding-right: 0.5rem;
+}
+
+/* Scrollbar khusus isi modal agar konsisten dengan tema */
+#modal-body::-webkit-scrollbar {
+    width: 0.6rem;
+}
+
+#modal-body::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 0.4rem;
+}
+
+#modal-body::-webkit-scrollbar-thumb {
+    background: var(--main-color);
+    border-radius: 0.4rem;
+}
+
+#modal-body::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-color);
 }
 
 #modal-body ul {
@@ -465,6 +506,49 @@ section {
     color: var(--accent-color);
     position: absolute;
     left: 0;
+}
+
+/* Catatan penutup di modal layanan (konteks "untuk Anda") */
+#modal-body .modal-note {
+    margin-top: 2.5rem;
+    padding: 1.5rem 1.8rem;
+    font-size: 1.5rem;
+    line-height: 1.7;
+    color: var(--text-color);
+    background: rgba(138, 43, 226, 0.10);
+    border: 0.1rem solid rgba(138, 43, 226, 0.35);
+    border-radius: 1.2rem;
+}
+
+#modal-body .modal-note strong {
+    color: var(--accent-color);
+}
+
+/* Tombol ajakan bertindak di dalam modal */
+#modal-body .modal-cta {
+    margin-top: 2.5rem;
+    text-align: center;
+}
+
+#modal-body .modal-cta a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 1.1rem 2.6rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-color);
+    background: linear-gradient(120deg, var(--main-color), #6a1fb8);
+    border-radius: 3rem;
+    box-shadow: 0 0.8rem 2rem rgba(138, 43, 226, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#modal-body .modal-cta a:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 1.2rem 2.6rem rgba(0, 188, 212, 0.45);
+    background: linear-gradient(120deg, var(--accent-color), #0e8fa3);
+    color: var(--bg-color);
 }
 
 /* Skills Section */
@@ -951,6 +1035,17 @@ section {
     .modal-content {
         padding: 3rem 2rem;
     }
+
+    /* Modal layanan di layar kecil: ruang ekstra agar judul tidak tertutup
+       tombol tutup, dan tinggi modal dibuat sedikit lebih lega */
+    #service-modal .modal-content {
+        max-height: 92vh;
+        max-height: 92dvh;
+    }
+
+    #service-modal #modal-title {
+        padding-right: 2.5rem;
+    }
 }
 
 @media (max-width: 450px) {
@@ -1313,5 +1408,626 @@ a span {
         top: 1.5rem;
         right: 1.5rem;
         font-size: 2.5rem;
+    }
+}
+/* ================================================================
+   ADVANCED ENHANCEMENTS
+   (Aurora background, spotlight, project buttons, detail pages)
+   ================================================================ */
+
+/* --- Scroll Progress Bar --- */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 0.4rem;
+    width: 0;
+    z-index: 1500; /* Di atas header, di bawah modal */
+    background: linear-gradient(90deg, var(--main-color), var(--accent-color));
+    box-shadow: 0 0 1.2rem var(--main-color);
+    transition: width 0.1s linear;
+}
+
+/* --- Aurora / Mesh Gradient Background (semua halaman) --- */
+body::before {
+    content: '';
+    position: fixed;
+    top: -20%;
+    left: -20%;
+    width: 140%;
+    height: 140%;
+    z-index: 0;
+    pointer-events: none;
+    background:
+        radial-gradient(60rem 42rem at 12% 18%, rgba(138, 43, 226, 0.28), transparent 60%),
+        radial-gradient(52rem 40rem at 88% 10%, rgba(0, 188, 212, 0.20), transparent 60%),
+        radial-gradient(58rem 46rem at 78% 84%, rgba(138, 43, 226, 0.18), transparent 60%),
+        radial-gradient(46rem 38rem at 20% 90%, rgba(0, 188, 212, 0.12), transparent 60%);
+    animation: auroraDrift 26s ease-in-out infinite alternate;
+}
+
+/* --- Grid Overlay --- */
+body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 6rem 6rem;
+    -webkit-mask-image: radial-gradient(ellipse 90% 70% at 50% 40%, #000 30%, transparent 100%);
+    mask-image: radial-gradient(ellipse 90% 70% at 50% 40%, #000 30%, transparent 100%);
+}
+
+@keyframes auroraDrift {
+    0% {
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+    50% {
+        transform: translate3d(2%, 3%, 0) scale(1.08);
+    }
+    100% {
+        transform: translate3d(-2%, -2%, 0) scale(1.04);
+    }
+}
+
+/* Konten harus berada di atas aurora */
+section, .footer {
+    position: relative;
+    z-index: 1;
+}
+
+/* Section dibuat transparan supaya aurora terlihat */
+.home, .education, .experience {
+    background: transparent;
+}
+
+.about, .contact, .footer {
+    background: rgba(26, 26, 26, 0.55);
+}
+
+/* --- Gradient Text pada Heading --- */
+.heading {
+    position: relative;
+}
+
+.heading span {
+    background: linear-gradient(120deg, var(--main-color), var(--accent-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.heading::after {
+    content: '';
+    display: block;
+    width: 12rem;
+    height: 0.4rem;
+    margin: 1.5rem auto 0;
+    border-radius: 2rem;
+    background: linear-gradient(90deg, transparent, var(--main-color), var(--accent-color), transparent);
+}
+
+/* --- Glassmorphism pada Kartu --- */
+/* Catatan: JANGAN pakai overflow:hidden di sini.
+   .education-item / .experience-item menyimpan .education-dot / .experience-dot
+   pada offset -2.5rem di luar kartu, sehingga akan terpotong. */
+.education-item, .experience-item, .service-box, .skill-category, .info-item {
+    position: relative;
+    background: rgba(26, 26, 26, 0.72);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+/* --- Spotlight yang mengikuti mouse --- */
+.education-item::before, .experience-item::before, .service-box::before,
+.skill-category::before, .info-item::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background: radial-gradient(20rem 20rem at var(--mx, 50%) var(--my, 50%), rgba(138, 43, 226, 0.20), transparent 70%);
+    opacity: 0;
+    transition: opacity 0.35s ease;
+}
+
+.education-item:hover::before, .experience-item:hover::before, .service-box:hover::before,
+.skill-category:hover::before, .info-item:hover::before {
+    opacity: 1;
+}
+
+/* Jaga konten kartu tetap di atas spotlight */
+.education-item > *, .experience-item > *, .service-box > *,
+.skill-category > *, .info-item > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* --- Project Media (Gambar + Overlay) --- */
+.project-media {
+    position: relative;
+    display: block;
+    margin: 1.2rem 0;
+    border-radius: 1.2rem;
+    overflow: hidden;
+    border: 1px solid rgba(138, 43, 226, 0.3);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+.project-media img {
+    width: 100%;
+    max-height: 180px;
+    object-fit: cover;
+    display: block;
+    margin: 0;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    transition: transform 0.5s ease;
+}
+
+.project-media-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-shadow: none;
+    color: transparent;
+    background: linear-gradient(180deg, rgba(13, 13, 13, 0.1), rgba(138, 43, 226, 0.6));
+    opacity: 0;
+    transition: opacity 0.35s ease;
+}
+
+.project-media-overlay i {
+    font-size: 2.6rem;
+    color: #fff;
+    transform: scale(0.6) rotate(-45deg);
+    transition: transform 0.4s ease;
+}
+
+.project-media:hover {
+    transform: translateY(-0.5rem);
+    border-color: var(--accent-color);
+    box-shadow: 0 18px 40px rgba(0, 188, 212, 0.3);
+}
+
+.project-media:hover .project-media-overlay {
+    opacity: 1;
+}
+
+.project-media:hover .project-media-overlay i {
+    transform: scale(1) rotate(0deg);
+}
+
+.experience-item:hover .project-media img {
+    transform: scale(1.08);
+}
+
+/* --- Project Tags --- */
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-top: 1.2rem;
+}
+
+.project-tags span {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--accent-color);
+    background: rgba(0, 188, 212, 0.08);
+    border: 1px solid rgba(0, 188, 212, 0.28);
+    padding: 0.4rem 1.1rem;
+    border-radius: 2rem;
+    letter-spacing: 0.03rem;
+    transition: 0.3s ease;
+}
+
+.project-tags span:hover {
+    background: rgba(0, 188, 212, 0.22);
+    color: #fff;
+}
+
+/* --- Tombol Detail Projek --- */
+.btn-project {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-top: 1.8rem;
+    padding: 1rem 2.2rem;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--text-color);
+    background: linear-gradient(120deg, var(--main-color), #6a1fb8);
+    border: 0.1rem solid rgba(255, 255, 255, 0.12);
+    border-radius: 3rem;
+    box-shadow: 0 0.8rem 2rem rgba(138, 43, 226, 0.35);
+    overflow: hidden;
+    transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+/* Efek sapuan cahaya saat hover */
+.btn-project::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.28), transparent);
+    transition: left 0.5s ease;
+}
+
+.btn-project:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent-color);
+    box-shadow: 0 1.2rem 2.6rem rgba(0, 188, 212, 0.4);
+}
+
+.btn-project:hover::before {
+    left: 100%;
+}
+
+.btn-project i {
+    position: relative;
+    transition: transform 0.35s ease;
+}
+
+.btn-project:hover i {
+    transform: translateX(5px);
+}
+
+/* --- Timeline Dot Pulsing --- */
+.education-item .education-dot::after,
+.experience-item .experience-dot::after {
+    content: '';
+    position: absolute;
+    inset: -0.8rem;
+    border: 0.2rem solid var(--main-color);
+    border-radius: 50%;
+    opacity: 0;
+    animation: dotPulse 2.4s ease-out infinite;
+    pointer-events: none;
+}
+
+@keyframes dotPulse {
+    0% {
+        transform: scale(0.6);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(1.7);
+        opacity: 0;
+    }
+}
+
+/* --- Halaman Detail Projek --- */
+.detail-page-body {
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 6rem 4%;
+}
+
+/* Wajib: konten harus di atas aurora (body::before) yang ber-z-index 0 */
+.detail-page-body > * {
+    position: relative;
+    z-index: 1;
+}
+
+.project-detail-container {
+    width: 100%;
+    max-width: 92rem;
+}
+
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 2.5rem;
+    padding: 0.9rem 1.8rem;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--text-color);
+    background: rgba(26, 26, 26, 0.7);
+    border: 0.1rem solid rgba(255, 255, 255, 0.12);
+    border-radius: 3rem;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: 0.35s ease;
+}
+
+.back-button:hover {
+    color: var(--main-color);
+    border-color: var(--main-color);
+    transform: translateX(-6px);
+    box-shadow: 0 0 1.5rem rgba(138, 43, 226, 0.35);
+}
+
+.project-detail-card {
+    position: relative;
+    padding: 4rem;
+    background: rgba(26, 26, 26, 0.72);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 0.1rem solid rgba(255, 255, 255, 0.1);
+    border-radius: 2rem;
+    box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.55);
+    overflow: hidden;
+    animation: detailIn 0.8s ease forwards;
+}
+
+/* Garis gradien di atas kartu */
+.project-detail-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0.5rem;
+    background: linear-gradient(90deg, var(--main-color), var(--accent-color));
+}
+
+@keyframes detailIn {
+    from {
+        opacity: 0;
+        transform: translateY(3rem);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.project-hero-image {
+    width: 100%;
+    max-height: 42rem;
+    object-fit: cover;
+    border-radius: 1.4rem;
+    border: 0.1rem solid rgba(138, 43, 226, 0.3);
+    box-shadow: 0 1.5rem 3.5rem rgba(0, 0, 0, 0.55);
+    margin-bottom: 3rem;
+}
+
+.project-header h1 {
+    font-size: 4rem;
+    line-height: 1.2;
+    margin-bottom: 0.8rem;
+    background: linear-gradient(120deg, #ffffff, var(--main-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.project-meta {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--accent-color);
+    letter-spacing: 0.05rem;
+}
+
+.project-detail-card hr {
+    border: none;
+    height: 0.1rem;
+    margin: 3rem 0;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.18), transparent);
+}
+
+.project-section h2 {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    font-size: 2.2rem;
+    color: var(--text-color);
+    margin-bottom: 1.5rem;
+}
+
+.project-section h2::before {
+    content: '';
+    flex: 0 0 auto;
+    width: 0.4rem;
+    height: 2.2rem;
+    background: linear-gradient(var(--main-color), var(--accent-color));
+    border-radius: 0.2rem;
+}
+
+.project-section p {
+    font-size: 1.7rem;
+    color: #cccccc;
+    line-height: 1.9;
+}
+
+/* Daftar "Fitur Utama" di halaman detail */
+.project-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.project-section ul li {
+    position: relative;
+    padding-left: 2.8rem;
+    font-size: 1.6rem;
+    color: #cccccc;
+    line-height: 1.8;
+    margin-bottom: 1rem;
+}
+
+.project-section ul li::before {
+    content: '\25B8';
+    position: absolute;
+    left: 0;
+    top: -0.1rem;
+    font-size: 1.4rem;
+    color: var(--main-color);
+}
+
+.project-section ul li:hover {
+    color: var(--text-color);
+}
+
+.tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.tech-tags span {
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: var(--accent-color);
+    background: rgba(0, 188, 212, 0.08);
+    border: 1px solid rgba(0, 188, 212, 0.28);
+    padding: 0.5rem 1.3rem;
+    border-radius: 2rem;
+    transition: 0.3s ease;
+}
+
+.tech-tags span:hover {
+    background: rgba(0, 188, 212, 0.22);
+    color: #fff;
+}
+
+.project-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.btn-github {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 1.1rem 2.4rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #fff;
+    background: linear-gradient(120deg, var(--main-color), #6a1fb8);
+    border-radius: 3rem;
+    box-shadow: 0 0.8rem 2rem rgba(138, 43, 226, 0.35);
+    transition: 0.35s ease;
+}
+
+.btn-github:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 1.2rem 2.6rem rgba(0, 188, 212, 0.4);
+}
+
+/* --- Contact Form: honeypot & status --- */
+
+/* Honeypot disembunyikan dari manusia, tapi tetap dibaca bot.
+   Web3Forms mewajibkan field botcheck disembunyikan via display:none. */
+.hp-field {
+    display: none !important;
+}
+
+.form-status {
+    display: block;
+    min-height: 2.2rem;
+    margin-top: 1.5rem;
+    font-size: 1.5rem;
+    line-height: 1.6;
+    text-align: left;
+    color: #cccccc;
+    opacity: 0;
+    transform: translateY(-0.5rem);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.form-status:empty {
+    margin-top: 0;
+}
+
+.form-status:not(:empty) {
+    opacity: 1;
+    transform: translateY(0);
+    padding: 1.2rem 1.5rem;
+    border-radius: 1rem;
+    background: rgba(255, 255, 255, 0.04);
+    border-left: 0.4rem solid rgba(255, 255, 255, 0.2);
+}
+
+.form-status.success {
+    color: #7ee787;
+    background: rgba(126, 231, 135, 0.08);
+    border-left-color: #2ea043;
+}
+
+.form-status.error {
+    color: #ff9d9d;
+    background: rgba(255, 100, 100, 0.08);
+    border-left-color: #da3633;
+}
+
+/* Tombol nonaktif saat sedang mengirim */
+#contact-submit:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* --- Responsive untuk Enhancements --- */
+@media (max-width: 768px) {
+    /* Matikan backdrop-filter di layar kecil: blur di atas background yang
+       terus beranimasi mahal computationally dan bisa bikin jank di HP. */
+    .education-item, .experience-item, .service-box, .skill-category,
+    .info-item, .project-detail-card, .back-button {
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        background: rgba(26, 26, 26, 0.9);
+    }
+
+    .heading::after {
+        width: 8rem;
+    }
+
+    .btn-project {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .project-detail-card {
+        padding: 2.5rem 2rem;
+    }
+
+    .project-header h1 {
+        font-size: 2.8rem;
+    }
+
+    .project-hero-image {
+        max-height: 24rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .project-detail-container .btn-github {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .tech-tags span {
+        font-size: 1.1rem;
+        padding: 0.4rem 1rem;
+    }
+}
+
+/* --- Aksesibilitas: Hormati preferensi pengguna --- */
+@media (prefers-reduced-motion: reduce) {
+    body::before,
+    .education-item .education-dot::after,
+    .experience-item .experience-dot::after,
+    .project-detail-card {
+        animation: none;
+    }
+
+    .scroll-progress {
+        transition: none;
     }
 }
