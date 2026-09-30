@@ -298,27 +298,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Download CV button
-    const downloadCV = document.querySelector('.download-cv');
-    if (downloadCV) {
-        downloadCV.addEventListener('click', (e) => {
-            e.preventDefault();
-            
-            // In a real application, this would download a PDF file
-            // For demonstration, we'll create a placeholder
-            const link = document.createElement('a');
-            link.href = '#';
-            link.download = 'CV_Mugni_Asfi_Asfiya.pdf';
-            link.textContent = 'CV Mugni Asfi Asfiya';
-            
-            // Simulate download
-            alert('CV Mugni Asfi Asfiya akan diunduh. (Simulasi)');
-            
-            // Uncomment the line below for real download
-            // link.click();
-        });
-    }
-
     // Smooth scroll for all anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
@@ -353,7 +332,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Observe elements for animations
     const elementsToAnimate = document.querySelectorAll(
-        '.service-box, .skill-category, .education-item, .experience-item, .info-item'
+        '.service-box, .skill-category, .education-item, .experience-item, .info-item, .testimonial-card, .blog-card'
     );
     
     elementsToAnimate.forEach(el => {
@@ -386,12 +365,15 @@ document.addEventListener('DOMContentLoaded', function() {
 window.addEventListener('load', () => {
     // Add loaded class to body for any post-load animations
     document.body.classList.add('loaded');
-    
-    // Optional: Remove preloader if you have one
-    // const preloader = document.querySelector('.preloader');
-    // if (preloader) {
-    //     preloader.style.display = 'none';
-    // }
+
+    // Hide preloader
+    const preloader = document.querySelector('.preloader');
+    if (preloader) {
+        preloader.classList.add('hidden');
+        setTimeout(() => {
+            preloader.style.display = 'none';
+        }, 500);
+    }
 });
 
 // Handle window resize
@@ -504,6 +486,120 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
 });
+// ================================================================
+// Blog Carousel
+// ================================================================
+(function () {
+    'use strict';
+
+    const track = document.querySelector('.blog-track');
+    const prevBtn = document.querySelector('.blog-carousel-prev');
+    const nextBtn = document.querySelector('.blog-carousel-next');
+    const dotsContainer = document.querySelector('.blog-carousel-dots');
+
+    if (!track || !prevBtn || !nextBtn || !dotsContainer) return;
+
+    const cards = track.querySelectorAll('.blog-card');
+    let currentIndex = 0;
+
+    function getVisibleCount() {
+        const width = window.innerWidth;
+        if (width <= 600) return 1;
+        if (width <= 991) return 2;
+        return 3;
+    }
+
+    function getMaxIndex() {
+        return Math.max(0, cards.length - getVisibleCount());
+    }
+
+    function updateCarousel() {
+        const maxIndex = getMaxIndex();
+        if (currentIndex > maxIndex) currentIndex = maxIndex;
+        if (currentIndex < 0) currentIndex = 0;
+
+        const card = cards[0];
+        if (!card) return;
+        const cardWidth = card.offsetWidth;
+        const gap = parseFloat(getComputedStyle(track).gap) || 0;
+        const offset = currentIndex * (cardWidth + gap);
+        track.style.transform = `translateX(-${offset}px)`;
+
+        // Update dots
+        const dots = dotsContainer.querySelectorAll('.blog-carousel-dot');
+        dots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === currentIndex);
+        });
+    }
+
+    function createDots() {
+        dotsContainer.innerHTML = '';
+        const maxIndex = getMaxIndex();
+        for (let i = 0; i <= maxIndex; i++) {
+            const dot = document.createElement('button');
+            dot.className = 'blog-carousel-dot' + (i === 0 ? ' active' : '');
+            dot.setAttribute('aria-label', `Ke artikel ${i + 1}`);
+            dot.addEventListener('click', () => {
+                currentIndex = i;
+                updateCarousel();
+            });
+            dotsContainer.appendChild(dot);
+        }
+    }
+
+    prevBtn.addEventListener('click', () => {
+        const maxIndex = getMaxIndex();
+        if (currentIndex > 0) {
+            currentIndex--;
+        } else {
+            currentIndex = maxIndex; // Loop ke artikel terakhir
+        }
+        updateCarousel();
+    });
+
+    nextBtn.addEventListener('click', () => {
+        const maxIndex = getMaxIndex();
+        if (currentIndex < maxIndex) {
+            currentIndex++;
+        } else {
+            currentIndex = 0; // Loop ke artikel pertama
+        }
+        updateCarousel();
+    });
+
+    // Touch/swipe support
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    track.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    track.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        const diff = touchStartX - touchEndX;
+        const maxIndex = getMaxIndex();
+        if (Math.abs(diff) > 50) {
+            if (diff > 0) {
+                // Swipe kiri → next (loop)
+                currentIndex = currentIndex < maxIndex ? currentIndex + 1 : 0;
+            } else {
+                // Swipe kanan → prev (loop)
+                currentIndex = currentIndex > 0 ? currentIndex - 1 : maxIndex;
+            }
+            updateCarousel();
+        }
+    }, { passive: true });
+
+    window.addEventListener('resize', () => {
+        createDots();
+        updateCarousel();
+    });
+
+    createDots();
+    updateCarousel();
+})();
+
 // ================================================================
 // Advanced Enhancements (scroll progress + mouse spotlight)
 // Sengaja ditulis sebagai IIFE terpisah: tidak menambah listener

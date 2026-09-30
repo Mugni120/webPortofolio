@@ -1,13 +1,29 @@
 <!DOCTYPE html>
-< lang="id">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portofolio | Mugni Asfi Asfiya</title>
+    <meta name="description" content="Portofolio Mugni Asfi Asfiya — Web Developer, UI/UX Designer, dan Data Analyst. Mahasiswa Universitas Nasional PASIM.">
+    <meta property="og:title" content="Mugni Asfi Asfiya | Portofolio">
+    <meta property="og:description" content="Web Developer, UI/UX Designer & Data Analyst">
+    <meta property="og:image" content="https://mugni120.github.io/webPortofolio/img/Mugni.jpg">
+    <meta property="og:url" content="https://mugni120.github.io/webPortofolio/">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" type="image/jpeg" href="img/Mugni.jpg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="preloader-content">
+            <div class="preloader-logo">Mugni<span>AJA</span></div>
+            <div class="preloader-spinner"></div>
+        </div>
+    </div>
+
     <div class="scroll-progress" aria-hidden="true"></div>
 
     <header class="header">
@@ -22,6 +38,8 @@
             <a href="#skills">Keahlian</a>
             <a href="#education">Pendidikan</a>
             <a href="#experience">Projek</a>
+            <a href="#testimonials">Testimoni</a>
+            <a href="#blog">Artikel</a>
             <a href="#contact">Kontak</a>
         </nav>
     </header>
@@ -33,6 +51,7 @@
         <div class="home-content">
             <h1 class="home-title">Halo, Saya <span>Mugni Asfi Asfiya</span></h1>
             <h3 class="typing-text">Saya seorang <span class="text-animation"></span></h3>
+            <span class="availability-badge"><span class="pulse-dot"></span> Terbuka untuk proyek freelance</span>
             <p>Saya adalah individu yang bersemangat dan berdedikasi dengan minat yang mendalam dalam pengembangan dan desain web. Tujuan saya adalah menciptakan pengalaman digital yang menarik dan mudah digunakan. Saya selalu bersemangat untuk mempelajari teknologi baru dan meningkatkan keterampilan saya untuk memberikan pekerjaan berkualitas tinggi. Saya percaya dalam menggabungkan estetika dengan fungsionalitas untuk membangun solusi yang berdampak.</p>
 
             <div class="social-icons">
@@ -49,10 +68,10 @@
     <section class="about" id="about">
         <h2 class="heading">Tentang <span>Saya</span></h2>
         <div class="about-content">
-            <p>Halo! Saya <span>Mugni Asfi Asfiya</span> seorang pengembang web yang sangat termotivasi dan berorientasi pada detail dengan pengalaman dalam menciptakan situs web yang responsif dan dinamis. Keahlian saya meliputi teknologi front-end seperti HTML, CSS, dan JavaScript, dan saya terus memperluas pengetahuan saya ke dalam kerangka kerja back-end. Saya menikmati memecahkan masalah yang kompleks dan berkolaborasi dengan tim untuk mewujudkan ide-ide inovatif. Di waktu luang, saya suka menjelajahi trend desain baru, berolahraga, membaca komik dan bermain games .</p>
-            <p>Saat ini saya sedang menempuh pendidikan di Universitas Nasional PASIM.</p>
+            <p>"Menyatukan Logika Analitis dan Kreativitas Visual."</p>
+<p>Halo, saya <span> Mugni Asfi Asfiya</span> Sebagai mahasiswa Universitas Nasional PASIM dan seorang Web Developer, saya memiliki ketertarikan mendalam pada penciptaan pengalaman web yang tidak hanya bekerja dengan sempurna, tetapi juga nyaman dipandang. Dari merancang antarmuka dengan HTML, CSS, dan JavaScript hingga merangkai logika back-end di balik layar, saya selalu berorientasi pada detail dan kualitas. Kegemaran saya dalam mengeksplorasi tren desain terbaru memberikan sentuhan visual pada karya-karya saya, sementara hobi saya membaca komik dan bermain game melatih pemikiran strategis saya dalam problem-solving. Saya selalu terbuka untuk berkolaborasi dan menciptakan solusi digital yang inovatif.</p>
             <!-- Ganti link download CV di about section -->
-            <a href="assets/CV_MugniAsfiAsfiya_(19-11-2025).pdf" download class="btn download-cv">
+            <a href="assets/CV%20Mugni%20Asfi%20Asfiya%20(Agustus-2026).pdf" download class="btn download-cv">
                      Unduh CV <i class="fa-solid fa-download"></i>
             </a>
         </div>
@@ -136,7 +155,7 @@
                 <h4>2023 - Sekarang</h4>
                 <h3>Universitas Nasional PASIM</h3>
                 <p>Sarjana Ilmu Komputer</p>
-                <p class="education-desc">Fokus pada pengembangan perangkat lunak, basis data, dan Analisis Data. IPK: 3.74/4.00</p>
+                <p class="education-desc">Fokus pada pengembangan perangkat lunak, desain grafis, dan Analisis Data. IPK: 3.78/4.00</p>
             </div>
             <div class="education-item">
                 <div class="education-dot"></div>
@@ -156,7 +175,7 @@
                 <h4>Website</h4>
                 <h3>Portofolio</h3>
                 <a class="project-media" href="portofolio.html" aria-label="Lihat detail proyek Portofolio">
-                    <img src="img/WP.jpg" alt="Portofolio Website">
+                    <img src="img/WP.jpg" alt="Portofolio Website" loading="lazy">
                     <span class="project-media-overlay"><i class="fa-solid fa-arrow-right"></i></span>
                 </a>
                 <p>Membuat website portofolio pribadi dengan menggunakan html, css, dan javascript.</p>
@@ -172,9 +191,9 @@
             <div class="experience-item">
                 <div class="experience-dot"></div>
                 <h4>Web App</h4>
-                <h3>SIAKAD Al-Manaar</h3>
+                <h3>SIAKAD </h3>
                 <a class="project-media" href="SIAKAD.html" aria-label="Lihat detail proyek SIAKAD Al-Manaar">
-                    <img src="img/WSK.PNG" alt="Dashboard SIAKAD Al-Manaar">
+                    <img src="img/WSK.PNG" alt="Dashboard SIAKAD Al-Manaar" loading="lazy">
                     <span class="project-media-overlay"><i class="fa-solid fa-arrow-right"></i></span>
                 </a>
                 <p>Membuat sistem informasi akademik untuk mengelola data guru, siswa, dan kelas di TK Al-Manaarussadiyyah.</p>
@@ -190,12 +209,12 @@
             <div class="experience-item">
                 <div class="experience-dot"></div>
                 <h4>Website</h4>
-                <h3>Katalog Kopi</h3>
+                <h3>E-Commerce Kopi</h3>
                 <a class="project-media" href="kenangansenja.html" aria-label="Lihat detail proyek Website E-Katalog kenangansenja">
-                    <img src="img/WEK.png" alt="Website E-Katalog kenangansenja">
+                    <img src="img/WEK.png" alt="Website E-Katalog kenangansenja" loading="lazy">
                     <span class="project-media-overlay"><i class="fa-solid fa-arrow-right"></i></span>
                 </a>
-                <p>Website e-katalog kedai kopi lokal dengan katalog produk, keranjang belanja, dan testimoni.</p>
+                <p>Website e-commerce kedai kopi lokal dengan katalog produk, keranjang belanja, dan testimoni.</p>
                 <div class="project-tags">
                     <span>HTML5</span>
                     <span>CSS3</span>
@@ -208,12 +227,12 @@
             <div class="experience-item">
                 <div class="experience-dot"></div>
                 <h4>Website</h4>
-                <h3>Facebook Clone</h3>
+                <h3>Fake Bot JS</h3>
                 <a class="project-media" href="facebook.html" aria-label="Lihat detail proyek Website Facebook Clone">
-                    <img src="img/WFB.png" alt="Website Facebook Clone">
+                    <img src="img/WFB.png" alt="Website Facebook Clone" loading="lazy">
                     <span class="project-media-overlay"><i class="fa-solid fa-arrow-right"></i></span>
                 </a>
-                <p>Website tiruan Facebook yang mensimulasikan percakapan dua arah dengan bot mugbot.</p>
+                <p>Website tiruan chatAI yang mensimulasikan percakapan dua arah dengan bot mugbot.</p>
                 <div class="project-tags">
                     <span>HTML</span>
                     <span>CSS</span>
@@ -228,7 +247,7 @@
                 <h4>Website</h4>
                 <h3>Anime(BNHA)</h3>
                 <a class="project-media" href="animeBNHA.html" aria-label="Lihat detail proyek Website Anime BNHA">
-                    <img src="img/WB.jpg" alt="Website Anime BNHA">
+                    <img src="img/WB.jpg" alt="Website Anime BNHA" loading="lazy">
                     <span class="project-media-overlay"><i class="fa-solid fa-arrow-right"></i></span>
                 </a>
                 <p>Membuat website anime lover dengan menggunakan html, css, dan javascript.</p>
@@ -242,6 +261,158 @@
                 </a>
             </div>
         </div>
+    </section>
+
+    <section class="testimonials" id="testimonials">
+        <h2 class="heading">Apa Kata <span>Mereka</span></h2>
+        <div class="testimonials-container">
+            <div class="testimonial-card">
+                <div class="testimonial-content">
+                    <i class="fa-solid fa-quote-left"></i>
+                    <p>Mugni mengerjakan sistem informasi akademik untuk sekolah kami dengan sangat rapi dan tepat waktu. Komunikasinya juga sangat baik selama proses pengerjaan.</p>
+                </div>
+                <div class="testimonial-author">
+                    <div class="author-avatar">K</div>
+                    <div class="author-info">
+                        <h4>Kepala Sekolah</h4>
+                        <p>TK Al-Manaarussadiyyah</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-content">
+                    <i class="fa-solid fa-quote-left"></i>
+                    <p>Website e-katalog kedai kopi kami jadi jauh lebih profesional. Pelanggan sekarang bisa melihat menu dan harga dengan mudah sebelum berkunjung.</p>
+                </div>
+                <div class="testimonial-author">
+                    <div class="author-avatar">P</div>
+                    <div class="author-info">
+                        <h4>Pemilik Kenangansenja</h4>
+                        <p>Kedai Kopi Lokal</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-content">
+                    <i class="fa-solid fa-quote-left"></i>
+                    <p>Desain website portofolio yang dibuat sangat modern dan menarik. Proses revisi juga selalu ditangani dengan cepat dan sabar.</p>
+                </div>
+                <div class="testimonial-author">
+                    <div class="author-avatar">T</div>
+                    <div class="author-info">
+                        <h4>Teman Sekelas</h4>
+                        <p>Universitas Nasional PASIM</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="blog" id="blog">
+        <h2 class="heading">Artikel <span>Saya</span></h2>
+        <div class="blog-carousel-wrapper">
+            <button class="blog-carousel-btn blog-carousel-prev" aria-label="Artikel sebelumnya">
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <div class="blog-carousel">
+                <div class="blog-track">
+                    <article class="blog-card">
+                        <div class="blog-image">
+                            <img src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=600&h=400&fit=crop" alt="Belajar JavaScript" loading="lazy">
+                            <span class="blog-category">Programming</span>
+                        </div>
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <span><i class="fa-regular fa-calendar"></i> 15 Juli 2026</span>
+                                <span><i class="fa-regular fa-clock"></i> 5 menit baca</span>
+                            </div>
+                            <h3>Belajar JavaScript di 2026: Apa yang Perlu Dikuasai?</h3>
+                            <p>JavaScript terus berkembang. Dari ES6+ hingga framework modern, ini panduan untuk memulai perjalanan Anda sebagai web developer.</p>
+                            <a href="blog-belajar-javascript.html" class="blog-read-more">Baca Selengkapnya <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+                    <article class="blog-card">
+                        <div class="blog-image">
+                            <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?w=600&h=400&fit=crop" alt="Membuat Web Responsif" loading="lazy">
+                            <span class="blog-category">Web Design</span>
+                        </div>
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <span><i class="fa-regular fa-calendar"></i> 28 Juni 2026</span>
+                                <span><i class="fa-regular fa-clock"></i> 4 menit baca</span>
+                            </div>
+                            <h3>Membuat Website Responsif yang Menarik di Semua Layar</h3>
+                            <p>Responsif bukan sekadar mobile-friendly. Ini tentang pengalaman yang konsisten di desktop, tablet, dan smartphone.</p>
+                            <a href="blog-web-responsif.html" class="blog-read-more">Baca Selengkapnya <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+                    <article class="blog-card">
+                        <div class="blog-image">
+                            <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=600&h=400&fit=crop" alt="Tips Freelance" loading="lazy">
+                            <span class="blog-category">Freelance</span>
+                        </div>
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <span><i class="fa-regular fa-calendar"></i> 10 Juni 2026</span>
+                                <span><i class="fa-regular fa-clock"></i> 6 menit baca</span>
+                            </div>
+                            <h3>Tips Memulai Karier Freelance sebagai Web Developer</h3>
+                            <p>Dari membangun portofolio hingga mencari klien pertama. Pengalaman dan tips dari perjalanan saya sebagai freelance developer.</p>
+                            <a href="blog-tips-freelance.html" class="blog-read-more">Baca Selengkapnya <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+                    <article class="blog-card">
+                        <div class="blog-image">
+                            <img src="https://images.unsplash.com/photo-1556075798-4825dfaaf498?w=600&h=400&fit=crop" alt="Git & GitHub" loading="lazy">
+                            <span class="blog-category">Tools</span>
+                        </div>
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <span><i class="fa-regular fa-calendar"></i> 25 Mei 2026</span>
+                                <span><i class="fa-regular fa-clock"></i> 5 menit baca</span>
+                            </div>
+                            <h3>Git & GitHub untuk Pemula: Panduan Lengkap</h3>
+                            <p>Version control adalah skill wajib developer. Pelajari cara menggunakan Git dan GitHub untuk mengelola kode Anda dengan profesional.</p>
+                            <a href="blog-git-github.html" class="blog-read-more">Baca Selengkapnya <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+                    <article class="blog-card">
+                        <div class="blog-image">
+                            <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&h=400&fit=crop" alt="UI/UX Design" loading="lazy">
+                            <span class="blog-category">Design</span>
+                        </div>
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <span><i class="fa-regular fa-calendar"></i> 15 Mei 2026</span>
+                                <span><i class="fa-regular fa-clock"></i> 7 menit baca</span>
+                            </div>
+                            <h3>Prinsip Dasar UI/UX yang Harus Diketahui Developer</h3>
+                            <p>Developer yang memahami desain akan menghasilkan produk yang lebih baik. Pelajari prinsip UI/UX yang bisa langsung diterapkan.</p>
+                            <a href="blog-ui-ux-design.html" class="blog-read-more">Baca Selengkapnya <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+                    <article class="blog-card">
+                        <div class="blog-image">
+                            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&h=400&fit=crop" alt="Portfolio Tips" loading="lazy">
+                            <span class="blog-category">Career</span>
+                        </div>
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <span><i class="fa-regular fa-calendar"></i> 1 Mei 2026</span>
+                                <span><i class="fa-regular fa-clock"></i> 4 menit baca</span>
+                            </div>
+                            <h3>Membangun Portofolio yang Menarik Minat Rekruter</h3>
+                            <p>Portofolio adalah kartu nama digital Anda. Tips membuat portofolio yang tidak hanya cantik, tapi juga meyakinkan rekruter.</p>
+                            <a href="blog-portfolio-tips.html" class="blog-read-more">Baca Selengkapnya <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+            <button class="blog-carousel-btn blog-carousel-next" aria-label="Artikel berikutnya">
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+        </div>
+        <div class="blog-carousel-dots"></div>
     </section>
 
     <section class="contact" id="contact">
@@ -332,7 +503,7 @@
                         <h5>Universitas Nasional PASIM</h5>
                         <p class="cv-period">2023 - 2027</p>
                         <p>Sarjana Ilmu Komputer</p>
-                        <p class="cv-desc">IPK: 3.74/4.00</p>
+                        <p class="cv-desc">IPK: 3.78/4.00</p>
                     </div>
                     <div class="cv-item">
                         <h5>MA AL-ISIQOMAH</h5>

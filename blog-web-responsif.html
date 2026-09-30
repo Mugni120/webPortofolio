@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Membuat Website Responsif - Blog Mugni</title>
+    <meta name="description" content="Panduan membuat website responsif yang menarik di semua ukuran layar.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="detail-page-body">
+
+    <main class="project-detail-container">
+        <a href="index.html#blog" class="back-button">&larr; Kembali ke Artikel</a>
+
+        <div class="project-detail-card">
+            <img src="img/WSK.PNG" alt="Website Responsif" class="project-hero-image">
+
+            <div class="project-header">
+                <h1>Membuat Website Responsif yang Menarik di Semua Layar</h1>
+                <p class="project-meta">Web Design &nbsp;|&nbsp; 28 Juni 2026 &nbsp;|&nbsp; 4 menit baca</p>
+            </div>
+
+            <hr>
+
+            <div class="project-section">
+                <h2>Apa Itu Responsif?</h2>
+                <p>
+                    Website responsif adalah website yang tampil optimal di berbagai perangkat —
+                    desktop, tablet, dan smartphone. Bukan sekadar "bisa dibuka di HP", tapi
+                    pengalaman pengguna yang konsisten dan nyaman di semua ukuran layar.
+                </p>
+            </div>
+
+            <hr>
+
+            <div class="project-section">
+                <h2>Prinsip Dasar Responsif</h2>
+                <ul>
+                    <li><strong>Mobile-First:</strong> Desain mulai dari layar terkecil, lalu naik ke layar lebih besar</li>
+                    <li><strong>Fluid Grid:</strong> Gunakan persen atau fr, bukan pixel tetap</li>
+                    <li><strong>Flexible Images:</strong> Gambar harus menyesuaikan ukuran container</li>
+                    <li><strong>Media Queries:</strong> Titik breakpoint untuk mengubah layout</li>
+                </ul>
+            </div>
+
+            <hr>
+
+            <div class="project-section">
+                <h2>Breakpoint yang Umum Dipakai</h2>
+                <ul>
+                    <li><strong>Mobile:</strong> &lt; 576px — layar HP kecil</li>
+                    <li><strong>Tablet:</strong> 576px – 768px — iPad mini, tablet portrait</li>
+                    <li><strong>Laptop:</strong> 768px – 992px — laptop kecil, tablet landscape</li>
+                    <li><strong>Desktop:</strong> &gt; 992px — monitor besar</li>
+                </ul>
+                <p>
+                    Gunakan <code>min-width</code> untuk pendekatan mobile-first dan
+                    <code>max-width</code> untuk pendekatan desktop-first.
+                </p>
+            </div>
+
+            <hr>
+
+            <div class="project-section">
+                <h2>Tools yang Membantu</h2>
+                <ul>
+                    <li><strong>CSS Flexbox</strong> — Layout satu dimensi (row atau column)</li>
+                    <li><strong>CSS Grid</strong> — Layout dua dimensi (row + column)</li>
+                    <li><strong>Clamp()</strong> — Ukuran fluid tanpa media queries</li>
+                    <li><strong>Container Queries</strong> — Responsif berdasarkan ukuran container, bukan viewport</li>
+                </ul>
+            </div>
+
+            <hr>
+
+            <div class="project-section">
+                <h2>Tips Penting</h2>
+                <ul>
+                    <li>Selalu uji di perangkat sungguhan, bukan hanya di browser dev tools</li>
+                    <li>Pastikan tombol dan link cukup besar untuk disentuh (min 44x44px)</li>
+                    <li>Gunakan font yang mudah dibaca di layar kecil</li>
+                    <li>Optimasi gambar agar loading cepat di koneksi lambat</li>
+                </ul>
+            </div>
+
+            <hr>
+
+            <div class="project-actions">
+                <a href="index.html#blog" class="btn-github">
+                    <i class="fa-solid fa-arrow-left"></i> Kembali ke Artikel
+                </a>
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>
